@@ -16,15 +16,29 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
 <script>
+    var arr;
+    $.get('https://raw.githubusercontent.com/lynda0214/lyricDisplay/master/test.txt', function(s) {
+        arr = s.split('\n')
+        for (var i = 0; i < arr.length; i++) {
+            console.log(arr[i])
+        }
+    });
+
+    var index = 0;
+
     var s = "sss";
 
     $(document).keypress(function(event) {
         var keycode = event.keyCode || event.which;
         console.log(keycode)
         if (keycode == 97) {
-            $('h1').text('left')
+            if (index > 0)
+                index--;
+            $('h1').text(arr[index])
         } else if (keycode == 100) {
-            $('h1').text('right')
+            if (index < arr.length - 1)
+                index++;
+            $('h1').text(arr[index])
         } else if (keycode == 115) {
             $('h1').text('down')
         }
