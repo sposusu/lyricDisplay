@@ -25,22 +25,17 @@
     });
 
     var index = 0;
-
-    var s = "sss";
-
     $(document).keypress(function(event) {
         var keycode = event.keyCode || event.which;
-        console.log(keycode)
+
         if (keycode == 97) {
-            if (index > 0)
-                index--;
+            if (index > 0) index--;
             $('h1').text(arr[index])
         } else if (keycode == 100) {
-            if (index < arr.length - 1)
-                index++;
+            if (index < arr.length - 1) index++;
             $('h1').text(arr[index])
         } else if (keycode == 115) {
-            $('h1').text('down')
+            $('h1').toggle();
         }
     });
 </script>
