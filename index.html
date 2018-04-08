@@ -8,8 +8,7 @@
 
 <body style="background:black;color:white">
 
-    <h1 style=" text-align:center; ">This is a Heading</h1>
-
+    <h1 style=" text-align:center; ">===NTU Musical 106-2 Lyrics===</h1>
 
 </body>
 
@@ -24,17 +23,17 @@
         }
     });
 
-    var index = 0;
-    $(document).keypress(function(event) {
-        var keycode = event.keyCode || event.which;
+    var index = -1;
+    $(document).keydown(function(event) {
+        var keycode = event.keyCode;
 
-        if (keycode == 97) {
+        if (keycode == 37) { // left
             if (index > 0) index--;
             $('h1').text(arr[index])
-        } else if (keycode == 100) {
+        } else if (keycode == 39) { // right
             if (index < arr.length - 1) index++;
             $('h1').text(arr[index])
-        } else if (keycode == 115) {
+        } else if (keycode == 40) { // down
             $('h1').toggle();
         }
     });
