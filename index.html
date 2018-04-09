@@ -9,7 +9,8 @@
 <body style="background:black;color:white">
 
     <h1 style=" text-align:center; ">===NTU Musical 106-2 Lyrics===</h1>
-
+    <h2 style=" text-align:center; ">===台大音樂劇社 106-2 歌詞===</h2>
+    
 </body>
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -24,15 +25,20 @@
     });
 
     var index = -1;
+    var enzh;
     $(document).keydown(function(event) {
         var keycode = event.keyCode;
 
         if (keycode == 37) { // left
             if (index > 0) index--;
-            $('h1').text(arr[index])
+            enzh = arr[index].split('/');
+            $('h1').text(enzh[0]);
+            $('h2').text(enzh[1]);
         } else if (keycode == 39) { // right
             if (index < arr.length - 1) index++;
-            $('h1').text(arr[index])
+            enzh = arr[index].split('/');
+            $('h1').text(enzh[0]);
+            $('h2').text(enzh[1]);
         } else if (keycode == 40) { // down
             $('h1').toggle();
         }
