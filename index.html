@@ -20,14 +20,23 @@
 
     <h1 style=" text-align:center; font-size:60px; margin:0; font-family: 'Noto Sans TC', sans-serif; ">===NTU Musical 106-2 Lyrics===</h1>
     <h2 style=" text-align:center; font-size:50px; margin:0; font-family: 'Noto Sans TC', sans-serif; ">===台大音樂劇社 106-2 歌詞===</h2>
-    
+    <div id='fileNames'></div>
 </body>
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
 <script>
+    
+    $(document).ready(function () 
+    {
+        $.get("https://raw.githubusercontent.com/lynda0214/lyricDisplay/master/lyrics/", function(data) 
+        {
+            $("#fileNames").append(data);
+        });
+    })
+    
     var arr;
-    $.get('https://raw.githubusercontent.com/lynda0214/lyricDisplay/master/test.txt', function(s) {
+    $.get('https://raw.githubusercontent.com/lynda0214/lyricDisplay/master/lyrics/test.txt', function(s) {
         arr = s.split('\n')
         for (var i = 0; i < arr.length; i++) {
             console.log(arr[i])
