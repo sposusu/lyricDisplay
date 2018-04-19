@@ -29,7 +29,7 @@
 <script>
 
     var dirName = 'https://raw.githubusercontent.com/lynda0214/lyricDisplay/master/lyrics/';
-    var fileNames = ['1 Hasa Diga Eebowai.txt', '2 Take Me or Leave Me.txt']; // TODO: Add Lyrics Here
+    var fileNames = [escape('1 Hasa Diga Eebowai.txt'), escape('2 Take Me or Leave Me.txt')]; // TODO: Add Lyrics Here
     var fileNamesComplete = [];
     for (var i = 0; i < fileNames.length; i++) {
         fileNamesComplete.push(dirName.concat(fileNames[i]));
