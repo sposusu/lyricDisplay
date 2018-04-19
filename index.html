@@ -18,6 +18,7 @@
 
 <body style="background:black;color:white">
 
+    <p style="color: #555555;">song name</p>
     <h1 style=" text-align:center; font-size:60px; margin:0; font-family: 'Noto Sans TC', sans-serif; ">===NTU Musical 106-2 Lyrics===</h1>
     <h2 style=" text-align:center; font-size:50px; margin:0; font-family: 'Noto Sans TC', sans-serif; ">===台大音樂劇社 106-2 歌詞===</h2>
     <div id='fileNames'></div>
@@ -26,46 +27,57 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
 <script>
+
+    var dirName = 'https://raw.githubusercontent.com/lynda0214/lyricDisplay/master/lyrics/';
+    var fileNames = ['01_test.txt', '02_test.txt']; // TODO: Add Lyrics Here
+    var fileNamesComplete = [];
+    for (var i = 0; i < fileNames.length; i++) {
+        fileNamesComplete.push(dirName.concat(fileNames[i]));
+    }
     
-    $(document).ready(function () 
-    {
-        $.get("https://raw.githubusercontent.com/lynda0214/lyricDisplay/master/lyrics/", function(data) 
-        {
-            $("#fileNames").append(data);
+    var arr = [];
+    $.each(fileNamesComplete, function(i, file){
+        $.get(file, function(s) {
+            console.log(s);
+            arr[i] = s.split('\n');    
         });
-    })
-    
-    var arr;
-    $.get('https://raw.githubusercontent.com/lynda0214/lyricDisplay/master/lyrics/01_test.txt', function(s) {
-        arr = s.split('\n')
-        for (var i = 0; i < arr.length; i++) {
-            console.log(arr[i])
-        }
     });
 
-    var index = -1;
+    var fileIndex = 0; 
+    var lyricIndex = -1;
     var enzh;
+
     $(document).keydown(function(event) {
         var keycode = event.keyCode;
 
         if (keycode == 37) { // left (last line of lyric)
-            if (index > 0) index--;
-            enzh = arr[index].split('/');
+            if (lyricIndex > 0) lyricIndex--;
+            enzh = arr[fileIndex][lyricIndex].split('/');
             $('h1').text(enzh[0]);
             $('h2').text(enzh[1]);
         } else if (keycode == 39) { // right (next line of lyric)
-            if (index < arr.length - 2) index++; // cause there's always a line change automatically added to the last line
-            enzh = arr[index].split('/');
+            if (lyricIndex < arr[fileIndex].length - 2) lyricIndex++; // cause there's always a line change automatically added to the last line
+            enzh = arr[fileIndex][lyricIndex].split('/');
             $('h1').text(enzh[0]);
             $('h2').text(enzh[1]);
         } else if (keycode == 32) { // space (blank page)
             $('h1').toggle();
-        } /*else if (keycode == 40) { // down (next song)
-            
-        } else if (keycode == 38) { // up (last song)
-            
-        }*/
+            $('h2').toggle();
+        } else if (keycode == 38) { // up (last song) 
+            if (fileIndex > 0) fileIndex--; 
+            lyricIndex = 0;
+            enzh = arr[fileIndex][lyricIndex].split('/');
+            $('h1').text(enzh[0]);
+            $('h2').text(enzh[1]);    
+        } else if (keycode == 40) { // down (next song)
+            if (fileIndex < fileNames.length - 1) fileIndex++;
+            lyricIndex = 0;
+            enzh = arr[fileIndex][lyricIndex].split('/');
+            $('h1').text(enzh[0]);
+            $('h2').text(enzh[1]);
+        }
     });
+
 </script>
 
 </html>
