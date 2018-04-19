@@ -16,9 +16,9 @@
     </style>
 </head>
 
-<body style="background:black;color:white">
-
-    <p style="color: #555555;">song name</p>
+<body style=" background:black;color:white; margin:0px; ">
+    <div id = "progress" style=" height: 5px; width: 10%; background-color:goldenrod; "></div>
+    <p style=" text-align:center; color: #555555; ">song name</p>
     <h1 style=" text-align:center; font-size:60px; margin:0; font-family: 'Noto Sans TC', sans-serif; ">===NTU Musical 106-2 Lyrics===</h1>
     <h2 style=" text-align:center; font-size:50px; margin:0; font-family: 'Noto Sans TC', sans-serif; ">===台大音樂劇社 106-2 歌詞===</h2>
     <div id='fileNames'></div>
@@ -36,16 +36,19 @@
     }
     
     var arr = [];
+    var totalLines = 0;
     $.each(fileNamesComplete, function(i, file){
         $.get(file, function(s) {
             console.log(s);
             arr[i] = s.split('\n');    
+            totalLines += arr[i].length-1;
         });
     });
 
     var fileIndex = 0; 
     var lyricIndex = -1;
     var enzh;
+    var songName;
 
     $(document).keydown(function(event) {
         var keycode = event.keyCode;
@@ -55,11 +58,15 @@
             enzh = arr[fileIndex][lyricIndex].split('/');
             $('h1').text(enzh[0]);
             $('h2').text(enzh[1]);
+            songName = fileNames[fileIndex].split('.');
+            $('p').text(songName[0]);
         } else if (keycode == 39) { // right (next line of lyric)
             if (lyricIndex < arr[fileIndex].length - 2) lyricIndex++; // cause there's always a line change automatically added to the last line
             enzh = arr[fileIndex][lyricIndex].split('/');
             $('h1').text(enzh[0]);
             $('h2').text(enzh[1]);
+            songName = fileNames[fileIndex].split('.');
+            $('p').text(songName[0]);
         } else if (keycode == 32) { // space (blank page)
             $('h1').toggle();
             $('h2').toggle();
@@ -68,14 +75,28 @@
             lyricIndex = 0;
             enzh = arr[fileIndex][lyricIndex].split('/');
             $('h1').text(enzh[0]);
-            $('h2').text(enzh[1]);    
+            $('h2').text(enzh[1]);
+            songName = fileNames[fileIndex].split('.');
+            $('p').text(songName[0]);   
         } else if (keycode == 40) { // down (next song)
             if (fileIndex < fileNames.length - 1) fileIndex++;
             lyricIndex = 0;
             enzh = arr[fileIndex][lyricIndex].split('/');
             $('h1').text(enzh[0]);
             $('h2').text(enzh[1]);
+            songName = fileNames[fileIndex].split('.');
+            $('p').text(songName[0]);
         }
+
+
+        var currentLines = 0;
+        for (var i = 0; i < fileIndex; i++) {
+            currentLines += arr[i].length;
+        }
+        currentLines += (lyricIndex);
+        console.log(currentLines);
+        document.getElementById('progress').style.width = (currentLines / totalLines)*100 + '%';        
+
     });
 
 </script>
