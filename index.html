@@ -59,14 +59,14 @@
             $('h1').text(enzh[0]);
             $('h2').text(enzh[1]);
             songName = fileNames[fileIndex].split('.');
-            $('p').text(songName[0]);
+            $('p').text(unescape(songName[0]));
         } else if (keycode == 39) { // right (next line of lyric)
             if (lyricIndex < arr[fileIndex].length - 2) lyricIndex++; // cause there's always a line change automatically added to the last line
             enzh = arr[fileIndex][lyricIndex].split('/');
             $('h1').text(enzh[0]);
             $('h2').text(enzh[1]);
             songName = fileNames[fileIndex].split('.');
-            $('p').text(songName[0]);
+            $('p').text(unescape(songName[0]));
         } else if (keycode == 32) { // space (blank page)
             $('h1').toggle();
             $('h2').toggle();
@@ -77,7 +77,7 @@
             $('h1').text(enzh[0]);
             $('h2').text(enzh[1]);
             songName = fileNames[fileIndex].split('.');
-            $('p').text(songName[0]);   
+            $('p').text(unescape(songName[0]));   
         } else if (keycode == 40) { // down (next song)
             if (fileIndex < fileNames.length - 1) fileIndex++;
             lyricIndex = 0;
@@ -85,7 +85,7 @@
             $('h1').text(enzh[0]);
             $('h2').text(enzh[1]);
             songName = fileNames[fileIndex].split('.');
-            $('p').text(songName[0]);
+            $('p').text(unescape(songName[0]));
         }
 
 
