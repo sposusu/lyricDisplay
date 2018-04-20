@@ -1,6 +1,8 @@
 # lyricDisplay
 
-_This project is for the lyrics display in performance of the Muscial Club in National Taiwan University_
+_This project is for the lyrics display in performance of the [Muscial Club in National Taiwan University](https://www.facebook.com/ntumusical/)_
+
+<br>
 
 ![](README.png)
 
@@ -29,3 +31,8 @@ Uplaod file should follows:
 1. **File Name** \# song name.txt (ex. 1 Hasa Diga Eebowai.txt) 
 2. **File Content** Original lyrics/Translated lyrics (ex. Hasa Diga Eebowai?/哈薩迪嘎伊伯蛙伊) for every single line
 3. **Extra** Original Song Name from <Musical Name>/Translated Song Name from <Translated Muscial Name> (ex. Hasa Diga Eebowai from <The Book of Mormon>/哈薩迪嘎伊伯蛙伊) for the first line
+
+For more infos, please see the following samples: 
+
+[Sample 1](https://github.com/lynda0214/lyricDisplay/blob/master/lyrics/1%20Hasa%20Diga%20Eebowai.txt) <br>
+[Sample 2](https://github.com/lynda0214/lyricDisplay/blob/master/lyrics/2%20Take%20Me%20or%20Leave%20Me.txt)
