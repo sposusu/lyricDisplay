@@ -1,6 +1,6 @@
 # lyricDisplay 
 
-[DEMO](https://lynda0214.github.io/lyricDisplay/)
+[[DEMO]](https://lynda0214.github.io/lyricDisplay/)
 
 _This project is for the lyrics display in performance of the [Musical Club in National Taiwan University](https://www.facebook.com/ntumusical/)_
 
