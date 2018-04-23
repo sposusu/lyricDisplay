@@ -14,7 +14,7 @@ For the audience, they can only see these two:
 * **Translated Lyric**
 
 
-For the lyric commander, there are two subtle UI helping you recognize where you are: 
+For the lyric commander, there are 4 subtle UIs helping you recognize where you are: 
 
 * **Progress Bar** shows current progress (curren line / total lines) %
 * **Last Song** shows last song title
