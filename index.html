@@ -2,8 +2,9 @@
 <html>
     
 <head>
-    <title>Page Title</title>
+    <title>lyricDisplay</title>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="./lynda.png" />
     <style>
         @font-face {
            font-family: 'Noto Sans TC';
@@ -18,7 +19,11 @@
 
 <body style=" background:black;color:white; margin:0px; ">
     <div id = "progress" style=" height: 5px; width: 10%; background-color:goldenrod; "></div>
-    <p style=" text-align:center; color: #555555; ">song name</p>
+    <div style="width:100%;">
+        <span id = "lastSong" style="display:inline-block; text-align:center; color: #555555; width:30%">last song name</span>
+        <span id = "currentSong" style="display:inline-block; text-align:center; color: #555555; width:30%">current song name</span>
+        <span id = "nextSong" style="display:inline-block; text-align:center; color: #555555; width:30%">next song name</span>
+    </div>
     <h1 style=" text-align:center; font-size:60px; margin:0; font-family: 'Noto Sans TC', sans-serif; ">===NTU Musical 106-2 Lyrics===</h1>
     <h2 style=" text-align:center; font-size:50px; margin:0; font-family: 'Noto Sans TC', sans-serif; ">===台大音樂劇社 106-2 歌詞===</h2>
     <div id='fileNames'></div>
@@ -55,38 +60,22 @@
 
         if (keycode == 37) { // left (last line of lyric)
             if (lyricIndex > 0) lyricIndex--;
-            enzh = arr[fileIndex][lyricIndex].split('/');
-            $('h1').text(enzh[0]);
-            $('h2').text(enzh[1]);
-            songName = fileNames[fileIndex].split('.');
-            $('p').text(unescape(songName[0]));
+            updateText();
         } else if (keycode == 39) { // right (next line of lyric)
             if (lyricIndex < arr[fileIndex].length - 2) lyricIndex++; // cause there's always a line change automatically added to the last line
-            enzh = arr[fileIndex][lyricIndex].split('/');
-            $('h1').text(enzh[0]);
-            $('h2').text(enzh[1]);
-            songName = fileNames[fileIndex].split('.');
-            $('p').text(unescape(songName[0]));
-        } else if (keycode == 32) { // space (blank page)
-            $('h1').toggle();
-            $('h2').toggle();
+            updateText();
         } else if (keycode == 38) { // up (last song) 
             if (fileIndex > 0) fileIndex--; 
             lyricIndex = 0;
-            enzh = arr[fileIndex][lyricIndex].split('/');
-            $('h1').text(enzh[0]);
-            $('h2').text(enzh[1]);
-            songName = fileNames[fileIndex].split('.');
-            $('p').text(unescape(songName[0]));   
+            updateText();
         } else if (keycode == 40) { // down (next song)
             if (fileIndex < fileNames.length - 1) fileIndex++;
             lyricIndex = 0;
-            enzh = arr[fileIndex][lyricIndex].split('/');
-            $('h1').text(enzh[0]);
-            $('h2').text(enzh[1]);
-            songName = fileNames[fileIndex].split('.');
-            $('p').text(unescape(songName[0]));
-        }
+            updateText();
+        } else if (keycode == 32) { // space (blank page)
+            $('h1').toggle();
+            $('h2').toggle();
+        } 
 
 
         var currentLines = 0;
@@ -98,6 +87,28 @@
         document.getElementById('progress').style.width = (currentLines / totalLines)*100 + '%';        
 
     });
+
+    function updateText() {
+        enzh = arr[fileIndex][lyricIndex].split('/');
+        $('h1').text(enzh[0]);
+        $('h2').text(enzh[1]);
+
+        if (fileIndex-1 >= 0) {
+            songName = fileNames[fileIndex-1].split('.');
+            $('#lastSong').text("Last: "+unescape(songName[0]));
+        } else {
+            $('#lastSong').text("Last: N/A");
+        }       
+        songName = fileNames[fileIndex].split('.');
+        $('#currentSong').text(unescape(songName[0]));
+
+        if (fileIndex+1 < fileIndex.length) {
+            songName = fileNames[fileIndex+1].split('.');
+            $('#nextSong').text("Next: "+unescape(songName[0]));
+        } else {
+            $('#nextSong').text("Next: N/A");
+        }
+    }
 
 </script>
 
