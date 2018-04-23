@@ -17,8 +17,9 @@ For the audience, they can only see these two:
 For the lyric commander, there are two subtle UI helping you recognize where you are: 
 
 * **Progress Bar** shows current progress (curren line / total lines) %
+* **Last Song** shows last song title
 * **Current Song** shows current song title
-
+* **Next Song** shows next song title
 
 There are 5 instinct commands for you: 
 
