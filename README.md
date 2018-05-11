@@ -33,7 +33,7 @@ Uplaod file should follows:
 
 1. **File Name** \# song name.txt (ex. 1 Hasa Diga Eebowai.txt) 
 2. **File Content** Original lyrics/Translated lyrics (ex. Hasa Diga Eebowai?/哈薩迪嘎伊伯蛙伊) for every single line
-3. **Extra** Original Song Name from &lt;Musical Name&gt;/Translated Song Name from &lt;Translated Muscial Name&gt; (ex. Hasa Diga Eebowai from &lt;The Book of Mormon&gt;/哈薩迪嘎伊伯蛙伊) for the first line
+3. **Extra** Original Song Name from &lt;Musical Name&gt;/Translated Song Name from &lt;Translated Muscial Name&gt; (ex. Hasa Diga Eebowai from &lt;The Book of Mormon&gt;/哈薩迪嘎伊伯蛙伊 選自 &lt;摩門經&gt;) for the first line
 
 For more infos, please see the following samples: 
 
