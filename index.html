@@ -90,6 +90,8 @@
     var enzh;
     var songName;
 
+    var state = 0; 
+
     $(document).keydown(function(event) {
         
         var keycode = event.keyCode;
@@ -100,7 +102,7 @@
         } else if (keycode == 39) { // right (next line of lyric)
             
             $('#opening').remove();
-            
+            state = 1;        
             if (lyricIndex < arr[fileIndex].length - 2) lyricIndex++; // cause there's always a line change automatically added to the last line
             updateText();
         } else if (keycode == 38) { // up (last song) 
@@ -137,7 +139,8 @@
             $('#lastSong').text("Last: "+unescape(songName[0]));
         } else {
             $('#lastSong').text("Last: N/A");
-        }       
+        }
+               
         songName = fileNames[fileIndex].split('.');
         $('#currentSong').text(unescape(songName[0]));
 
@@ -149,8 +152,7 @@
         }
     }
 
-
-    if (document.getElementById("demo")) {
+    if (state == 0) {
         // Set the date we're counting down to
         var countDownDate = new Date("Jun 12, 2018 18:30:00").getTime();
 
