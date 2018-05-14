@@ -101,7 +101,7 @@
             updateText();
         } else if (keycode == 39) { // right (next line of lyric)
             
-            $('#opening').remove();
+            $('#opening').hide();
             state = 1;        
             if (lyricIndex < arr[fileIndex].length - 2) lyricIndex++; // cause there's always a line change automatically added to the last line
             updateText();
@@ -144,7 +144,7 @@
         songName = fileNames[fileIndex].split('.');
         $('#currentSong').text(unescape(songName[0]));
 
-        if (fileIndex+1 < fileIndex.length) {
+        if (fileIndex+1 < fileNames.length) {
             songName = fileNames[fileIndex+1].split('.');
             $('#nextSong').text("Next: "+unescape(songName[0]));
         } else {
@@ -152,7 +152,7 @@
         }
     }
 
-    if (state != 1) {
+    
         // Set the date we're counting down to
         var countDownDate = new Date("Jun 12, 2018 18:30:00").getTime();
 
@@ -172,6 +172,7 @@
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         // Display the result in the element with id="demo"
+        if (state != 1) 
         document.getElementById("demo").innerHTML = days + "d " + hours + "h "
         + minutes + "m " + seconds + "s ";
 
@@ -181,7 +182,7 @@
             document.getElementById("demo").innerHTML = "EXPIRED";
         }
         }, 1000);
-    }
+    
 </script>
 
 </html>
