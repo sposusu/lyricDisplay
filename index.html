@@ -113,48 +113,6 @@
 
     var lights = [];
 
-   $(document).click( function (event) {
-
-        var color = 'rgb(' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) + ')';
-
-        for(var i=0; i<100; i++) {
-            var light = {
-                x: cursor.x,
-                y: cursor.y,
-                vx: Math.random()*8 - 4,
-                vy: Math.random()*8 - 4,
-                color: color,
-                life: Math.random()*100
-            }
-            lights.push(light);
-        }
-
-    });
-
-
-    forever(function(){
-
-        for(var i=0; i<lights.length; i++) {
-            var light = lights[i];
-            light.x += light.vx;
-            light.y += light.vy;
-            light.vy += 0.1;
-            light.life--;
-
-            if(light.life < 0) {
-                lights.splice(i, 1);
-                i--;
-            }
-        }
-
-        for(var i=0; i<lights.length; i++) {
-            var light = lights[i];
-            pen.size = 0;
-            pen.fillColor = light.color;
-            pen.drawCircle(light.x, light.y, 6*light.life/100);
-        }
-    });
-
     function updateText() {
         enzh = arr[fileIndex][lyricIndex].split('/');
         $('h1').text(enzh[0]);
